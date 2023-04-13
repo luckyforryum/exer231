@@ -30,7 +30,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public void update(Long id, User user) {
         userDao.update(id,user);
     }
