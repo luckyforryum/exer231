@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<html lang="en">
+<body>
+
+<table border="1" >
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Operations</th>
+    </tr>
+
+
+
+    <tr th:each="show :${allUsers}">
+
+
+
+        <td th:utext="${show.getId()}">Id</td>
+        <td th:utext="${show.getFirstName()}">Name</td>
+        <td th:utext="${show.getLastName()}">LastName</td>
+        <td th:utext="${show.getEmail()}">Email</td>
+
+
+        <td>
+            <form th:action="@{/update-info/{userId}(userId = ${show.id})}" >
+                <button type="submit">Update</button>
+            </form>
+
+
+            <form th:action="@{/{userId}(userId = ${show.id})}" th:method="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+
+
+    </tr>
+</table>
+
+
+<input type="button" value="Add"
+       onclick="window.location.href = '/addNewUser'" th:method="POST"/>
+
+
+</body>
+</html>
+</html>
+
